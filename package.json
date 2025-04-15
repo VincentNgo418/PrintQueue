@@ -1,0 +1,23 @@
+{
+  "name": "printqueue",
+  "version": "1.0.0",
+  "description": "Website for CSC 437",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VincentNgo418/PrintQueue.git"
+  },
+  "author": "Vincent",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VincentNgo418/PrintQueue/issues"
+  },
+  "homepage": "https://github.com/VincentNgo418/PrintQueue#readme",
+  "workspaces": [
+        "packages/*"
+    ]
+
+}
