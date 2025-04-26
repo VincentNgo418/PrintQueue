@@ -1,24 +1,88 @@
 <!doctype html>
-<html>
-    <head></head>
+<html lang="en">
+    
+    <title>IS Print Queue</title>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="styles/page.css" />
+        <link rel="stylesheet" href="styles/tokens.css"/>
+    
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
     <body>
-        <ol>
-            <li id="Request-01">
-                <a href="PrintRequest.html">
-                    Request 1
-                </a>
-            </li>
-            <li id="Request-02">
-                <a href="PrintRequest.html">
-                    Request 2
-                </a>
-            </li>
-            <li id="Request-03">
-                <a href="PrintRequest.html">
-                    Request 3
-                </a>
-            </li>
-        </ol>
+        <header>
+            <h1>
+                Print Queue
+            </h1>
+            <nav>
+                <svg class="nav-icon">
+                    <use href="assets/nav.svg#icon-save"/>
+                </svg>
+                <a href="index.html">Requests</a>
+                <a href="Printer.html">Printers</a>
+                <button>?</button>
+            </nav>
+        </header>
+        <main>
+            <table class="Queue">
+                <thead>
+                    <tr>
+                        <th>Req #</th>
+                        <th>Submitted</th>
+                        <th>Drop Date</th>
+                        <th>Purpose</th>
+                        <th># Parts</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tr id="Request-01", href="PrintRequest.html">
+                    <th>1234</th>
+                    <th>5/10/23</th>
+                    <th>5/16/23</th>
+                    <th>Personal</th>
+                    <th>2</th>
+                    <th>Not Started</th>
+                    <th><button class="dropdown-btn"><svg class="drop-icon"><use href="assets/nav.svg#icon-dropdown"/></svg></button></th>
+                </tr>
+                <tr id="Request-02", href="PrintRequest.html">
+                    <th>1234</th>
+                    <th>5/10/23</th>
+                    <th>5/16/23</th>
+                    <th>Personal</th>
+                    <th>2</th>
+                    <th>Not Started</th>
+                    <th><button class="dropdown-btn">▶️</button></th>
+                </tr>
+                <tr id="Request-03", href="PrintRequest.html">
+                    <th>1234</th>
+                    <th>5/10/23</th>
+                    <th>5/16/23</th>
+                    <th>Personal</th>
+                    <th>2</th>
+                    <th>Not Started</th>
+                    <th><button class="dropdown-btn">▶️</button></th>
+                </tr>
+            </table>
+            <div class="modal-overlay">
+                <h2>
+                    Request #1234
+                </h2>
+                <dl>
+                    <dt>Requestor</dt>
+                    <dd>Vincent</dd>
+                    <dt>Email</dt>
+                    <dd>vngo09@calpoly.edu</dd>
+                    <dt>Print Strength</dt>
+                    <dd>Robust</dd>
+                    <dt>Surface Quality</dt>
+                    <dd>Smooth</dd>
+                    
+                </dl>
+            </div>
+        </main>
     </body>
 
 </html>

@@ -1,0 +1,23 @@
+.rack {
+    display:flex;
+    flex-direction:column;
+    align-content:center;
+
+}
+
+.shelf {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    margin: 1rem;
+}
+
+dl{
+    background-color: var(--color-background);
+    border-radius: 5px;
+    padding:1rem;
+}
+
+dd {
+   text-align: right;
+}
