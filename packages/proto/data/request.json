@@ -1,0 +1,34 @@
+{
+  "print_details": {
+    "requestor": "Vincent Ngo",
+    "email": "vngo09@calpoly.edu",
+    "strength": "Robust",
+    "quality": "Smooth"
+  },
+  "parts": [
+    {
+      "name": "Base.3mf",
+      "id": "abc",
+      "completed": 2,
+      "started": 1,
+      "total": 3,
+      "failed": 1
+    },
+    {
+      "name": "Base.3mf",
+      "id": "abc",
+      "completed": 2,
+      "started": 1,
+      "total": 3,
+      "failed": 1
+    },
+    {
+      "name": "Base.3mf",
+      "id": "abc",
+      "completed": 2,
+      "started": 1,
+      "total": 3,
+      "failed": 1
+    }
+  ]
+}

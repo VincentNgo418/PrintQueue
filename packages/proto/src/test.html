@@ -1,0 +1,38 @@
+
+<div class="wrapper">
+                    <h2>
+                        Request #1234
+                    </h2>
+                    <dl class="request-details">
+                        <div class="grid-pair">
+                            <dt>Requestor: </dt>
+                            <dd>${this.request.print_details.requestor}</dd>
+                        </div>
+                        <div class="grid-pair">
+                            <dt>Email: </dt>
+                            <dd>${this.request.print_details.email}</dd>
+                        </div>
+                        <div class="grid-pair">
+                            <dt>Print Strength: </dt>
+                            <dd>${this.request.print_details.strength}</dd>
+                        </div>
+                        <div class="grid-pair">
+                            <dt>Surface Quality: </dt>
+                            <dd>${this.request.print_details.quality}</dd>
+                        </div>
+                    </dl>
+
+                    <div class="msg-box">
+
+                    </div>
+                    <table>
+                        <thead>
+                            <th></th>
+                            <th>Part Name</th>
+                            <th>Status</th>
+                        </thead>
+                        <tbody>
+                            ${this.request.parts.map(renderPart)}
+                        </tbody>
+                    </table>
+            </div>

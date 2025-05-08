@@ -1,15 +1,74 @@
 <!doctype html>
 <html lang="en">
-    
-    <title>IS Print Queue</title>
     <head>
+        <title>IS Print Queue</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="styles/page.css" />
         <link rel="stylesheet" href="styles/tokens.css"/>
-    
+        
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <script type="module">
+            function appearModalDisplay() {
+                const modal = document.getElementById("modal-overlay");
+                const overlay = document.getElementById("overlay");
+               
+                console.log("Appear");
+                modal.style.display = "flex";
+                overlay.style.display = "block";
+                overlay.style.pointerEvents = "auto";
+                modal.style.pointerEvents = "auto";
+
+            }
+
+            //add the same event listener to all elements with "dropdown-btn" class
+            Array.prototype.filter.call( document.getElementsByClassName("dropdown-btn"),
+                (element) => element.addEventListener("click",appearModalDisplay)
+
+            );
+                
+            function disappearModalDisplay() {
+                const modal = document.getElementById("modal-overlay");
+                const overlay = document.getElementById("overlay");
+
+                modal.style.display = "none";
+                overlay.style.display="none";
+            }
+            document.getElementById("overlay")
+                .addEventListener("click",disappearModalDisplay);
+
+
+            function toggleDarkMode(target, checked) {
+            
+                target.dispatchEvent( new CustomEvent(
+                    "dark-mode:toggle", {
+                        bubbles: true,
+                        detail: {checked},
+                    }
+                ))
+                
+            }
+
+            import {onDarkModeToggle} from './modules/index.js';
+            document.body
+                .addEventListener("dark-mode:toggle",onDarkModeToggle);
+            
+            document.getElementById("darkToggle")
+                .addEventListener("change",(event)=> {
+                   event.stopPropagation();
+                   toggleDarkMode(event.target,event.target.checked);
+                })
+
+            import {define} from "@calpoly/mustang";
+            import {PrintRequestElement} from "/src/PrintRequest.js"
+
+            define({
+                "print-request": PrintRequestElement
+            });
+
+        </script>
+    
     </head>
     <body>
         <header>
@@ -22,6 +81,7 @@
                 </svg>
                 <a href="index.html">Requests</a>
                 <a href="Printer.html">Printers</a>
+                <input type="checkbox" autocomplete="off" id="darkToggle">
                 <button>?</button>
             </nav>
         </header>
@@ -30,6 +90,7 @@
                 <thead>
                     <tr>
                         <th>Req #</th>
+                        <th>Requestor</th>
                         <th>Submitted</th>
                         <th>Drop Date</th>
                         <th>Purpose</th>
@@ -38,8 +99,9 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tr id="Request-01", href="PrintRequest.html">
+                <tr id="Request-01" href="PrintRequest.html">
                     <th>1234</th>
+                    <th>Vincent N</th>
                     <th>5/10/23</th>
                     <th>5/16/23</th>
                     <th>Personal</th>
@@ -47,41 +109,35 @@
                     <th>Not Started</th>
                     <th><button class="dropdown-btn"><svg class="drop-icon"><use href="assets/nav.svg#icon-dropdown"/></svg></button></th>
                 </tr>
-                <tr id="Request-02", href="PrintRequest.html">
-                    <th>1234</th>
-                    <th>5/10/23</th>
-                    <th>5/16/23</th>
-                    <th>Personal</th>
-                    <th>2</th>
-                    <th>Not Started</th>
-                    <th><button class="dropdown-btn">▶️</button></th>
+                <tr id="Request-02" href="PrintRequest.html">
+                    <td>1234</td>
+                    <td>Nathan H</td>
+                    <td>5/10/23</td>
+                    <td>5/16/23</td>
+                    <td>Personal</td>
+                    <td>2</td>
+                    <td>Not Started</td>
+                    <td><button class="dropdown-btn">▶️</button></td>
                 </tr>
-                <tr id="Request-03", href="PrintRequest.html">
-                    <th>1234</th>
-                    <th>5/10/23</th>
-                    <th>5/16/23</th>
-                    <th>Personal</th>
-                    <th>2</th>
-                    <th>Not Started</th>
-                    <th><button class="dropdown-btn">▶️</button></th>
+                <tr id="Request-03" href="PrintRequest.html">
+                    <td>1234</td>
+                    <td>Mandy T</td>
+                    <td>5/10/23</td>
+                    <td>5/16/23</td>
+                    <td>Personal</td>
+                    <td>2</td>
+                    <td>Not Started</td>
+                    <td><button class="dropdown-btn">▶️</button></td>
                 </tr>
             </table>
-            <div class="modal-overlay">
-                <h2>
-                    Request #1234
-                </h2>
-                <dl>
-                    <dt>Requestor</dt>
-                    <dd>Vincent</dd>
-                    <dt>Email</dt>
-                    <dd>vngo09@calpoly.edu</dd>
-                    <dt>Print Strength</dt>
-                    <dd>Robust</dd>
-                    <dt>Surface Quality</dt>
-                    <dd>Smooth</dd>
-                    
-                </dl>
+            <div class = "overlay" id = "overlay">
+                <div class="modal-overlay" id="modal-overlay" onclick ="event.stopPropagation()">
+                    <print-request src="/data/request.json">
+                    </print-request>
+
+                </div>
             </div>
+           
         </main>
     </body>
 
