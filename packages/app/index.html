@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>IS Print Queue</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="styles/page.css" />
+    <link rel="stylesheet" href="styles/tokens.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <script type="module" src="/src/main.ts"></script>
+    <script type="module">
+
+        function onDarkModeToggle(event) {
+            console.log("Dark mode event captured");
+            const body = event.currentTarget;
+            const checked = event.detail.checked;
+            body.classList.toggle("dark-mode", checked);
+
+        }
+        document.body
+            .addEventListener("dark-mode:toggle", onDarkModeToggle);
+
+    </script>
+
+</head>
+
+<body>
+    <mu-history provides="sandbox:history">
+        <mu-auth provides="sandbox:auth" redirect="/login.html">
+            <mu-store provides="sandbox:model">
+                <sb-header></sb-header>
+                <mu-switch></mu-switch>
+            </mu-store>
+        </mu-auth>
+    </mu-history>
+</body>
+
+</html>

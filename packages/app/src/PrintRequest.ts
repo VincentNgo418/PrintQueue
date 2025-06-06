@@ -1,42 +1,29 @@
 import { html, css, LitElement } from "lit";
-//import { property } from "lit/decorators.js";
 import reset from "./styles/reset.css.ts"
 import { property, state } from "lit/decorators.js";
+import { define, View } from "@calpoly/mustang";
+import { Msg } from "./messages";
+import { Model } from "./model";
+import {Part, PrintRequest} from "server/models/print-request.ts"
+
+export class PrintRequestViewElement extends View<Model,Msg> {
+    @property({attribute: "req-id"})
+    reqid?: string;
+
+    @state()
+    get request(): PrintRequest {
+        return this.model.printrequest ? 
+        this.model.printrequest :
+        this.defaultRequest;
+
+    }
 
 
-//this is a type definition?
-//can ts use this to parse JSON?
-type Part = {
-    name: string;
-    id: string;
-    completed: number;
-    started: number;
-    total: number;
-    failed: number;
-}
+    constructor() {
+        super("sandbox:model");
+    }
 
-type  printRequest = {
-    print_details: {
-        num: number;
-        requestor: string;
-        email: string;
-        strength: string;
-        quality: string;
-        submitted: Date;
-        drop: Date;
-        status: string;
-
-    };
-    parts: Array<Part>;
-        
-}
-
-export class PrintRequestElement extends LitElement {
-    @property()
-    src?: string;
-    
-
-    defaultRequest: printRequest = {
+    defaultRequest: PrintRequest = {
         
         print_details:{
             num: 0,
@@ -51,9 +38,26 @@ export class PrintRequestElement extends LitElement {
         parts: []
     }
 
-    @state()
-    request: printRequest = this.defaultRequest;
-    
+
+    attributeChangedCallback(
+        name: string,
+        oldValue: string,
+        newValue: string
+        ) {
+        super.attributeChangedCallback(name, oldValue, newValue);
+        console.log("reqid changed: "+newValue);
+        if (
+            name === "req-id" &&
+            oldValue !== newValue &&
+            newValue
+        ) {
+            this.dispatchMessage([
+            "request/select",
+            { requestid: newValue }
+            ]);
+        }
+    }
+
 
     static styles = [
         reset.styles,
@@ -96,27 +100,9 @@ export class PrintRequestElement extends LitElement {
 
     ];
 
-    connectedCallback() {
-        super.connectedCallback();
-        if (this.src) {
-            this.fetchPrintRequest(this.src);
-        }
-      }
+   
 
-   /*  hydrate(src: string) {
-        fetch(src)
-            .then(res => res.json())
-            .then((json: object) => {
-            if(json) {
-                this.request = json as printRequest;
-
-                console.log(this.request.print_details.email)
-                
-        }
-    })
-    }
- */
-    string : string = ""
+/*     string : string = ""
     fetchPrintRequest(reqID: string) {
         console.log(reqID);
         fetch("/api/printrequests/"+"683b8494203c3ea3a6e50307", {
@@ -126,16 +112,16 @@ export class PrintRequestElement extends LitElement {
             .then(res => res.json())
             .then((json: object) => {
                 if(json) {
-                     this.request = json as printRequest;
+                     this.request = json as PrintRequest;
                      console.log(this.request.print_details.email)
                 }
 
             }) 
-    }
+    } */
 
 
     override render() {
-
+        console.log("rerendering");
         function renderPart(p: Part) {
             var status: string = "";
 
@@ -151,7 +137,6 @@ export class PrintRequestElement extends LitElement {
             </tr>
             `
         }
-
 
         return html`
             <div class="wrapper">

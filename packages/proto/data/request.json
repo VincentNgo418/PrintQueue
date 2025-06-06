@@ -3,7 +3,10 @@
     "requestor": "Vincent Ngo",
     "email": "vngo09@calpoly.edu",
     "strength": "Robust",
-    "quality": "Smooth"
+    "quality": "Smooth",
+    "status":"in-progress",
+    "purpose":"class-project"
+
   },
   "parts": [
     {

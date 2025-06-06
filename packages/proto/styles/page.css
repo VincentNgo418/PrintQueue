@@ -20,18 +20,8 @@ body {
 
 }
 
-body.dark-mode {
-    background-image: url(../assets/PrintQueueDark.png);
 
-}
-
-body.dark-mode thead{
-    background-color:var(--color-primary-light)
-}
-h1 {
-    font-family:"GFS Didot";
-}
-header {
+sb-header {
     color: var(--color-primary);
     padding-left:20px;
     padding-right:20px;
@@ -45,15 +35,15 @@ header {
     justify-content: space-between;
 }
 
-nav {
-    display: flex;
-    flex-direction: row;
+body.dark-mode {
+    background-image: url(../assets/PrintQueueDark.png);
 }
 
-nav > * {
-    margin-right: 2rem;
-    text-decoration: none;
-  }
+body.dark-mode thead{
+    background-color:var(--color-primary-light)
+}
+
+
 
 a {
     display:flex;
@@ -63,6 +53,7 @@ a {
     font-family: 'Roboto';
      
 }
+
 
 main{
   width:80%;

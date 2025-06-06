@@ -8,78 +8,69 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
-      <script type="module" crossorigin src="/assets/index-ByNDIZZp.js"></script>
-      <link rel="stylesheet" crossorigin href="/assets/index-CAfnsv6H.css">
+      <script type="module" crossorigin src="/assets/index-DSqOzd64.js"></script>
+      <link rel="stylesheet" crossorigin href="/assets/index-DK_UWw8v.css">
     </head>
     <body>
-        <header>
-            <h1>
-                Print Queue
-            </h1>
-            <nav>
-                <svg class="nav-icon">
-                    <use href="/assets/nav-kCGfGe8d.svg#icon-save"/>
-                </svg>
-                <a href="index.html">Requests</a>
-                <a href="Printer.html">Printers</a>
-                <input type="checkbox" autocomplete="off" id="darkToggle">
-                <button>?</button>
-            </nav>
-        </header>
-        <main>
-            <table class="Queue">
-                <thead>
-                    <tr>
-                        <th>Req #</th>
-                        <th>Requestor</th>
-                        <th>Submitted</th>
-                        <th>Drop Date</th>
-                        <th>Purpose</th>
-                        <th># Parts</th>
-                        <th>Status</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tr id="Request-01" href="PrintRequest.html">
-                    <th>1234</th>
-                    <th>Vincent N</th>
-                    <th>5/10/23</th>
-                    <th>5/16/23</th>
-                    <th>Personal</th>
-                    <th>2</th>
-                    <th>Not Started</th>
-                    <th><button class="dropdown-btn"><svg class="drop-icon"><use href="/assets/nav-kCGfGe8d.svg#icon-dropdown"/></svg></button></th>
-                </tr>
-                <tr id="Request-02" href="PrintRequest.html">
-                    <td>1234</td>
-                    <td>Nathan H</td>
-                    <td>5/10/23</td>
-                    <td>5/16/23</td>
-                    <td>Personal</td>
-                    <td>2</td>
-                    <td>Not Started</td>
-                    <td><button class="dropdown-btn">▶️</button></td>
-                </tr>
-                <tr id="Request-03" href="PrintRequest.html">
-                    <td>1234</td>
-                    <td>Mandy T</td>
-                    <td>5/10/23</td>
-                    <td>5/16/23</td>
-                    <td>Personal</td>
-                    <td>2</td>
-                    <td>Not Started</td>
-                    <td><button class="dropdown-btn">▶️</button></td>
-                </tr>
-            </table>
-            <div class = "overlay" id = "overlay">
-                <div class="modal-overlay" id="modal-overlay" onclick ="event.stopPropagation()">
-                    <print-request src="/data/request.json">
-                    </print-request>
+        <mu-auth provides="sandbox:auth">
+            <sb-header>
 
+            </sb-header>
+            <main>
+                <table class="Queue">
+                    <thead>
+                        <tr>
+                            <th>Req #</th>
+                            <th>Requestor</th>
+                            <th>Submitted</th>
+                            <th>Drop Date</th>
+                            <th>Purpose</th>
+                            <th># Parts</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tr id="Request-01" href="PrintRequest.html">
+                        <th>1234</th>
+                        <th>Vincent N</th>
+                        <th>5/10/23</th>
+                        <th>5/16/23</th>
+                        <th>Personal</th>
+                        <th>2</th>
+                        <th>Not Started</th>
+                        <th><button class="dropdown-btn"><svg class="drop-icon">▶️</svg></button></th>
+                    </tr>
+                    <tr id="Request-02" href="PrintRequest.html">
+                        <td>1234</td>
+                        <td>Nathan H</td>
+                        <td>5/10/23</td>
+                        <td>5/16/23</td>
+                        <td>Personal</td>
+                        <td>2</td>
+                        <td>Not Started</td>
+                        <td><button class="dropdown-btn">▶️</button></td>
+                    </tr>
+                    <tr id="Request-03" href="PrintRequest.html">
+                        <td>1234</td>
+                        <td>Mandy T</td>
+                        <td>5/10/23</td>
+                        <td>5/16/23</td>
+                        <td>Personal</td>
+                        <td>2</td>
+                        <td>Not Started</td>
+                        <td><button class="dropdown-btn">▶️</button></td>
+                    </tr>
+                </table>
+                <div class = "overlay" id = "overlay">
+                    <div class="modal-overlay" id="modal-overlay" onclick ="event.stopPropagation()">
+                        <print-request src="683b8494203c3ea3a6e50307">
+                        </print-request>
+
+                    </div>
                 </div>
-            </div>
-           
-        </main>
+            
+            </main>
+        </mu-auth>
     </body>
 
 </html>
